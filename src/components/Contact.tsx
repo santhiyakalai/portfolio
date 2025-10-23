@@ -11,14 +11,14 @@ const Contact = () => {
   });
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
-
+const apiUrl = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setStatus('');
 
     try {
-      await axios.post('http://localhost:3000/send-email', formData); // Update this URL for production
+      await axios.post(`${apiUrl}/send-email`, formData); // Update this URL for production
       setStatus('Message sent successfully!');
       setFormData({ name: '', email: '', subject: '', message: '' }); // Reset formVITE_API_URL=http://localhost:3000
     } catch (error) {
